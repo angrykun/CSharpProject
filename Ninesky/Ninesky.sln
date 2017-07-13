@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ninesky.Web", "Ninesky.Web\Ninesky.Web.csproj", "{5F3F615D-F185-4154-9E21-6B9400C4E726}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ninesky.Core", "Ninesky.Core\Ninesky.Core.csproj", "{AE461004-2678-4D3B-939E-D21AC21D470F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ninesky.DataLibrary", "Ninesky.DataLibrary\Ninesky.DataLibrary.csproj", "{4671D9FD-D2AD-45D7-AE2D-FA521F37B23D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F3F615D-F185-4154-9E21-6B9400C4E726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F3F615D-F185-4154-9E21-6B9400C4E726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F3F615D-F185-4154-9E21-6B9400C4E726}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F3F615D-F185-4154-9E21-6B9400C4E726}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE461004-2678-4D3B-939E-D21AC21D470F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE461004-2678-4D3B-939E-D21AC21D470F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE461004-2678-4D3B-939E-D21AC21D470F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE461004-2678-4D3B-939E-D21AC21D470F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4671D9FD-D2AD-45D7-AE2D-FA521F37B23D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4671D9FD-D2AD-45D7-AE2D-FA521F37B23D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4671D9FD-D2AD-45D7-AE2D-FA521F37B23D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4671D9FD-D2AD-45D7-AE2D-FA521F37B23D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
