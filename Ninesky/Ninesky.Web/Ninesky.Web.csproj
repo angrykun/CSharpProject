@@ -167,6 +167,10 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Control\ControlAreaRegistration.cs" />
+    <Compile Include="Areas\Control\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Member\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -188,6 +192,14 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Member\Views\web.config" />
+    <Content Include="Areas\Member\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Member\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Member\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Control\Views\web.config" />
+    <Content Include="Areas\Control\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Control\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Control\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -237,6 +249,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Control\Models\" />
+    <Folder Include="Areas\Member\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
