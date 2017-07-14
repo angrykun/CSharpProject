@@ -39,7 +39,7 @@ namespace Ninesky.Web.Areas.Control.Controllers
                     _admin.LoginTime = DateTime.Now;
                     _admin.LoginIP = Request.UserHostAddress;
                     adminManger.Update(_admin);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index");
                 }
                 else if (_response.Code == 2) ModelState.AddModelError("Accounts", _response.Message);
                 else if (_response.Code == 3) ModelState.AddModelError("Password", _response.Message);
@@ -57,5 +57,15 @@ namespace Ninesky.Web.Areas.Control.Controllers
             return RedirectToAction("Login");
         }
         #endregion
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public JsonResult ListJson()
+        {
+            return Json(adminManger.FindList());
+        }
     }
 }

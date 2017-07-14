@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "管理员";
+}
+@section SideNav{@Html.Partial("SideNavPartialView")}
+
+<ol class="breadcrumb">
+    <li><span class="glyphicon glyphicon-home"></span>@Html.ActionLink("首页", "Index", "Home")</li>
+    <li class="active">@Html.ActionLink("管理员", "Index", "Admin")</li>
+</ol>
+
+
+<div id="toolbar" class="btn-group" role="group">
+    <button id="btn_add" class="btn btn-default"><span class="glyphicon glyphicon-plus">添加</span></button>
+    <button id="btn_del" class="btn btn-default"><span class="glyphicon glyphicon-remove">删除</span></button>
+</div>
+
+<table id="admingrid"></table>
+@section style{
+    @Styles.Render("~/Content/bootstrapplugincss")
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrapplugin")
+
+    <script>
+        $(function () {
+            var $table = $("#admingrid");
+            $table.table({
+                toolbar: "#toolbar",
+                showRefresh: true,
+                showColumns: true,
+                showFooter: true,
+                method: "post",
+                url: "@Url.Action("ListJson")",
+                columns: [
+                    { title: "state", checkbox: true },
+                    { title: "ID", field: "AdministratorID" },
+                    { title: "帐号", field: "Accounts" },
+                    { title: "登录时间", field: "LoginTime", formatter: function (value) { return moment(value).format("YYYY-MM-DD HH:mm:ss") } },
+                    { title: "登录IP", field: "LoginIP" },
+                    { title: "创建时间", field: "CreateTime", formatter: function (value) { return moment(value).format("YYYY-MM-DD HH:mm:ss") } },
+                    { title: "操作", field: "AdministratorID", formatter: function (value, row, index) { return "<a href=\"javascript:void(0)\" onclick=\"ResetPassword(" + value + ",'" + row.Accounts + "')\">重置密码</a>" } }
+                ]
+            });
+
+        });
+    </script>
+
+}
