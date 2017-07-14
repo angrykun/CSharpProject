@@ -18,7 +18,7 @@ namespace Ninesky.Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
               namespaces: new string[] { "Ninesky.Web.Controllers" } //命名空间
-            );
+            ).DataTokens.Add("Area", "Control"); //设置Area下的Control区域为默认首页
         }
     }
 }
