@@ -167,8 +167,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Control\AdminAuthorizeAttribute.cs" />
     <Compile Include="Areas\Control\ControlAreaRegistration.cs" />
+    <Compile Include="Areas\Control\Controllers\AdminController.cs" />
     <Compile Include="Areas\Control\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Control\Models\LoginViewModel.cs" />
     <Compile Include="Areas\Member\Controllers\HomeController.cs" />
     <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -186,6 +189,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\StyleControl.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -200,6 +204,7 @@
     <Content Include="Areas\Control\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Control\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Control\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Control\Views\Admin\Login.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -249,7 +254,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Control\Models\" />
     <Folder Include="Areas\Member\Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +263,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ninesky.Core\Ninesky.Core.csproj">
+      <Project>{ae461004-2678-4d3b-939e-d21ac21d470f}</Project>
+      <Name>Ninesky.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

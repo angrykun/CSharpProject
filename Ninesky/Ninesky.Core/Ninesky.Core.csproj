@@ -49,8 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator.cs" />
+    <Compile Include="AdministratorManager.cs" />
     <Compile Include="BaseManager.cs" />
     <Compile Include="ContextFactory.cs" />
+    <Compile Include="General\Security.cs" />
     <Compile Include="NineskyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Paging.cs" />

@@ -6,6 +6,10 @@ using System.Web.Mvc;
 
 namespace Ninesky.Web.Areas.Control.Controllers
 {
+    /// <summary>
+    /// 主控制器
+    /// </summary>
+    [AdminAuthorize]
     public class HomeController : Controller
     {
         // GET: Control/Home
