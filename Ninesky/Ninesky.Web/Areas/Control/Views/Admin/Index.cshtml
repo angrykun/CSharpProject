@@ -5,7 +5,7 @@
 @section SideNav{@Html.Partial("SideNavPartialView")}
 
 <ol class="breadcrumb">
-    <li><span class="glyphicon glyphicon-home"></span>@Html.ActionLink("首页", "Index", "Home")</li>
+    <li><span class="glyphicon glyphicon-home"></span> @Html.ActionLink("首页", "Index", "Home")</li>
     <li class="active">@Html.ActionLink("管理员", "Index", "Admin")</li>
 </ol>
 
@@ -27,7 +27,7 @@
     <script>
         $(function () {
             var $table = $("#admingrid");
-            $table.table({
+            $table.bootstrapTable({
                 toolbar: "#toolbar",
                 showRefresh: true,
                 showColumns: true,

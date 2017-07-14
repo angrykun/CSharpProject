@@ -29,6 +29,7 @@ namespace Ninesky.Web
                       "~/Scripts/bootstrap-dialog.js",
                       "~/Scripts/bootstrap-select.js",
                       "~/Scripts/bootstrap-table.js",
+                      "~/Scripts/bootstrap-table-zh-CN.js",
                       "~/Scripts/motree.js",
                       "~/Scripts/jquery.twbsPagination-1.3.1.js"));
 
