@@ -3,7 +3,6 @@
 /// <reference path="bootstrap-datetimepicker.min.js" />
 /// <reference path="bootstrap-dialog.js" />
 /// <reference path="bootstrap-select.min.js" />
-/// <reference path="bootstrap-table.js" />
 /// <reference path="jquery.twbspagination-1.3.1.min.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />
