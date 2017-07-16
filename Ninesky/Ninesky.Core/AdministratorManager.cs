@@ -62,6 +62,45 @@ namespace Ninesky.Core
             return _resp;
         }
         /// <summary>
+        /// 删除【批量】返回Code ：1-成功，2-部分删除，0-失败
+        /// </summary>
+        /// <param name="administratorIDList"></param>
+        /// <returns></returns>
+        public Response Delete(List<int> administratorIDList)
+        {
+            Response _resp = new Response();
+            int _totalDel = administratorIDList.Count;
+            int _totalAdmin = Count();
+            foreach (int i in administratorIDList)
+            {
+                if (_totalAdmin > 1)
+                {
+                    base.Repository.Delete(new Administrator() { AdministratorID = i }, false);
+                    _totalAdmin--;
+                }
+                else _resp.Message = "最少保留1名管理员";
+                _resp.Data = base.Repository.Save();
+                if (_resp.Data == _totalDel)
+                {
+                    _resp.Code = 1;
+                    _resp.Message = "成功删除" + _resp.Data + "名管理员";
+                }
+                else if (_resp.Data > 0)
+                {
+                    _resp.Code = 2;
+                    _resp.Message = "成功删除" + _resp.Data + "名管理员";
+                }
+                else
+                {
+                    _resp.Code = 0;
+                    _resp.Message = "删除失败";
+                }
+            }
+            return _resp;
+        }
+
+
+        /// <summary>
         /// 查找
         /// </summary>
         /// <param name="accounts"></param>

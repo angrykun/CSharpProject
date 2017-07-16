@@ -25,7 +25,17 @@
     @Scripts.Render("~/bundles/bootstrapplugin")
 
     <script>
+        function ResetPassword(id, accounts) {
+            BootstrapDialog.confirm("确定重置" + accounts + "的密码", function (result) {
+                if (result) {
+                    $.post("@Url.Action("ResetPassword","Admin")", { id: id }, function (data) {
+                        BootstrapDialog.alert(data.Message);
+                    }, "json");
+                }
+            });
+        }
         $(function () {
+            //表格开始
             var $table = $("#admingrid");
             $table.bootstrapTable({
                 toolbar: "#toolbar",
@@ -44,7 +54,92 @@
                     { title: "操作", field: "AdministratorID", formatter: function (value, row, index) { return "<a href=\"javascript:void(0)\" onclick=\"ResetPassword(" + value + ",'" + row.Accounts + "')\">重置密码</a>" } }
                 ]
             });
+            //表格结束
 
+            //添加按钮
+            $("#btn_add").click(function () {
+
+                var addDialog = new BootstrapDialog({
+                    title: "<span class='glyphicon glyphicon-plus'></span>添加管理员",
+                    message: function (dialog) {
+                        var $message = $('<div></div>');
+                        var pageToLoad = dialog.getData('pageToLoad');
+                        $message.load(pageToLoad);
+                        return $message;
+                    },
+                    data: {
+                        'pageToLoad': '@Url.Action("AddPartialView")'
+                    },
+                    buttons: [{
+                        icon: "glyphicon glyphicon-plus",
+                        label: "添加",
+                        action: function (dialogItself) {
+                            $.post($("form").attr("action"), $("form").serializeArray(), function (data) {
+                                if (data.Code == 1) {
+                                    BootstrapDialog.show({
+                                        message: data.Message,
+                                        buttons: [{
+                                            icon: "glyphicon glyphicon-ok",
+                                            label: "确定",
+                                            action: function (dialogItself) {
+                                                $table.bootstrapTable("refresh");
+                                                dialogItself.close();
+                                                addDialog.close();
+                                            }
+                                        }]
+                                    });
+                                } else {
+                                    BootstrapDialog.alert(data.Message);
+                                }
+                            }, "json");
+                            $("form").validate();
+                        }
+                    }, {
+                        icon: "glyphicon glyphicon-remove",
+                        label: "关闭",
+                        action: function (dialogItself) {
+                            dialogItself.close();
+                        }
+                    }]
+                });
+                addDialog.open();
+            });
+            //添加按钮结束
+
+            //删除按钮
+            $("#btn_del").click(function () {
+                var selected = $table.bootstrapTable("getSelections");
+                if ($(selected).length > 0) {
+                    BootstrapDialog.confirm("确定删除选中的" + $(selected).length + "位管理员", function (result) {
+                        if (result) {
+                            var ids = new Array($(selected).length);
+                            $.each(selected, function (index, value) {
+                                ids[index] = value.AdministratorID;
+                            });
+                            $.post("@Url.Action("DeleteJson","Admin")", { ids: ids }, function (data) {
+                                if (data.Code != 0) {
+                                    BootstrapDialog.show({
+                                        title: "删除管理员",
+                                        message: data.Message,
+                                        buttons: [{
+                                            icon: "glyphicon glyphicon-ok",
+                                            label: "确定",
+                                            action: function (dialogItself) {
+                                                $table.bootstrapTable("refresh");
+                                                dialogItself.close();
+                                            }
+                                        }]
+                                    });
+                                } else {
+                                    BootstrapDialog.alert(data.Message);
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    BootstrapDialog.alert("请至少选择删除一位管理员！");
+                }
+            });
         });
     </script>
 
