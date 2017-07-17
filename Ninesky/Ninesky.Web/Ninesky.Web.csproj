@@ -171,6 +171,7 @@
     <Compile Include="Areas\Control\ControlAreaRegistration.cs" />
     <Compile Include="Areas\Control\Controllers\AdminController.cs" />
     <Compile Include="Areas\Control\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Control\Controllers\RoleController.cs" />
     <Compile Include="Areas\Control\Models\AddAdminViewModel.cs" />
     <Compile Include="Areas\Control\Models\LoginViewModel.cs" />
     <Compile Include="Areas\Member\Controllers\HomeController.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Prompt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -309,6 +311,11 @@
     <Content Include="Areas\Control\Views\Admin\SideNavPartialView.cshtml" />
     <Content Include="Areas\Control\Views\Admin\AddPartialView.cshtml" />
     <Content Include="Areas\Control\Views\Admin\MyInfo.cshtml" />
+    <Content Include="Areas\Control\Views\Shared\Prompt.cshtml" />
+    <Content Include="Areas\Control\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Control\Views\Role\SideNavPartialView.cshtml" />
+    <Content Include="Areas\Control\Views\Role\Add.cshtml" />
+    <Content Include="Areas\Control\Views\Role\Modify.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.min.js" />
