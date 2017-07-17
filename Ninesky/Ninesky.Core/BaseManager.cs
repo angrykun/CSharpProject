@@ -145,8 +145,7 @@ namespace Ninesky.Core
             return paging;
         }
         #endregion
-
-
+                       
         #region 总记录
         /// <summary>
         /// 总记录数
