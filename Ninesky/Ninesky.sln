@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ninesky.Core", "Ninesky.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ninesky.DataLibrary", "Ninesky.DataLibrary\Ninesky.DataLibrary.csproj", "{4671D9FD-D2AD-45D7-AE2D-FA521F37B23D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ninesky.Auxiliary", "Ninesky.Auxiliary\Ninesky.Auxiliary.csproj", "{15EF08B3-4153-430A-AC71-06BD64C78224}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4671D9FD-D2AD-45D7-AE2D-FA521F37B23D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4671D9FD-D2AD-45D7-AE2D-FA521F37B23D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4671D9FD-D2AD-45D7-AE2D-FA521F37B23D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15EF08B3-4153-430A-AC71-06BD64C78224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15EF08B3-4153-430A-AC71-06BD64C78224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15EF08B3-4153-430A-AC71-06BD64C78224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15EF08B3-4153-430A-AC71-06BD64C78224}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
