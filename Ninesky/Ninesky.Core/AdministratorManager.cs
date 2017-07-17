@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ninesky.Core.Types;
+using Ninesky.Core.General;
 
 namespace Ninesky.Core
 {
@@ -40,7 +41,7 @@ namespace Ninesky.Core
             }
             else
             {
-                _admin.Password = password;
+                _admin.Password = Security.Sha256(password);
                 _resp = Update(_admin);
             }
             return _resp;

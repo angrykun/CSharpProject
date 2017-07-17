@@ -76,6 +76,7 @@ namespace Ninesky.Web.Areas.Control.Controllers
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
+        [ActionName("AddPartialView")]
         public JsonResult AddJson(AddAdminViewModel addMin)
         {
             Response _res = new Core.Types.Response();
@@ -102,7 +103,7 @@ namespace Ninesky.Web.Areas.Control.Controllers
                 _res.Code = 0;
                 _res.Message = General.GetModelErrorString(ModelState);
             }
-
+            return Json(_res);
         }
         #endregion
 
