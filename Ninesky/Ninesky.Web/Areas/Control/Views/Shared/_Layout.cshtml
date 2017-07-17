@@ -24,17 +24,21 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="@Url.Action("Index","Role")"><span class="glyphicon glyphicon-user"></span>用户管理</a>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> 用户管理 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index","User")"> 用户管理</a></li>
+                            <li><a href="@Url.Action("Index","Role")"> 角色管理</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="@Url.Action("Index","Admin")"><span class="glyphicon glyphicon-lock"></span>管理</a>
                     </li>
                     <li>
-                        <a  href="javascript:void(0);"><span class="glyphicon glyphicon-list"></span>栏目设置</a>
+                        <a href="javascript:void(0);"><span class="glyphicon glyphicon-list"></span>栏目设置</a>
                     </li>
                     <li>
-                        <a  href="javascript:void(0);"><span class="glyphicon glyphicon-cog"></span>网站设置</a>
+                        <a href="javascript:void(0);"><span class="glyphicon glyphicon-cog"></span>网站设置</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -60,6 +64,6 @@
         </footer>
     </div>
 
-  
+
 </body>
 </html>
