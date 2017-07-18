@@ -31,6 +31,7 @@ namespace Ninesky.Web
                       "~/Scripts/bootstrap-table.js",
                       "~/Scripts/bootstrap-table-zh-CN.js",
                       "~/Scripts/motree.js",
+                      "~/Scripts/jquery.ztree.all-3.5",
                       "~/Scripts/jquery.twbsPagination-1.3.1.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

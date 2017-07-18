@@ -58,7 +58,12 @@
     <Compile Include="BaseManager.cs" />
     <Compile Include="Category\Category.cs" />
     <Compile Include="Category\CategoryGeneral.cs" />
+    <Compile Include="Category\CategoryGeneralManager.cs" />
+    <Compile Include="Category\CategoryLink.cs" />
+    <Compile Include="Category\CategoryLinkManager.cs" />
+    <Compile Include="Category\CategoryManager.cs" />
     <Compile Include="Category\CategoryPage.cs" />
+    <Compile Include="Category\CategoryPageManager.cs" />
     <Compile Include="Category\CategoryType.cs" />
     <Compile Include="ContextFactory.cs" />
     <Compile Include="General\Security.cs" />

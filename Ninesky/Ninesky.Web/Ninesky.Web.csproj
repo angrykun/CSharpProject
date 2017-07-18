@@ -170,6 +170,7 @@
     <Compile Include="Areas\Control\AdminAuthorizeAttribute.cs" />
     <Compile Include="Areas\Control\ControlAreaRegistration.cs" />
     <Compile Include="Areas\Control\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Control\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Control\Controllers\HomeController.cs" />
     <Compile Include="Areas\Control\Controllers\RoleController.cs" />
     <Compile Include="Areas\Control\Controllers\UserController.cs" />
@@ -204,9 +205,30 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\img\diy\1_close.png" />
+    <Content Include="Content\img\diy\1_open.png" />
+    <Content Include="Content\img\diy\2.png" />
+    <Content Include="Content\img\diy\3.png" />
+    <Content Include="Content\img\diy\4.png" />
+    <Content Include="Content\img\diy\5.png" />
+    <Content Include="Content\img\diy\6.png" />
+    <Content Include="Content\img\diy\7.png" />
+    <Content Include="Content\img\diy\8.png" />
+    <Content Include="Content\img\diy\9.png" />
+    <Content Include="Content\img\line_conn.gif" />
+    <Content Include="Content\img\line_conn.png" />
+    <Content Include="Content\img\loading.gif" />
+    <Content Include="Content\img\metro.gif" />
+    <Content Include="Content\img\metro.png" />
+    <Content Include="Content\img\zTreeStandard.gif" />
+    <Content Include="Content\img\zTreeStandard.png" />
     <Content Include="Content\StyleControl.css" />
     <Content Include="Content\tree.css" />
     <Content Include="Content\tree.min.css" />
+    <Content Include="Content\zTree.css" />
+    <Content Include="Content\zTree.min.css" />
+    <Content Include="Content\zTree.theme.metro.css" />
+    <Content Include="Content\zTree.theme.metro.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -406,6 +428,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.ztree.all-3.5.js" />
+    <Content Include="Scripts\jquery.ztree.all-3.5.min.js" />
+    <Content Include="Scripts\jquery.ztree.dropdown.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -453,6 +478,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Control\Views\Category\" />
     <Folder Include="Areas\Member\Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -467,6 +493,10 @@
     <ProjectReference Include="..\Ninesky.Core\Ninesky.Core.csproj">
       <Project>{ae461004-2678-4d3b-939e-d21ac21d470f}</Project>
       <Name>Ninesky.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ninesky.DataLibrary\Ninesky.DataLibrary.csproj">
+      <Project>{4671D9FD-D2AD-45D7-AE2D-FA521F37B23D}</Project>
+      <Name>Ninesky.DataLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
