@@ -1,0 +1,10 @@
+﻿@model Ninesky.Core.Category.CategoryLink
+ 
+<div class="form-group">
+    @Html.LabelFor(model => model.Url, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+    </div>
+</div>
+

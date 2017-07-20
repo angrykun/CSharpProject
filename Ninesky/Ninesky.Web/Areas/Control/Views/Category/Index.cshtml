@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "栏目首页";
+}
+@section SideNav{@Html.Partial("SideNavPartialView")}
+
+<ol class="breadcrumb">
+    <li><span class="glyphicon glyphicon-home"></span>  @Html.ActionLink("首页", "Index", "Home")</li>
+    <li class="active">@Html.ActionLink("栏目管理", "Index", "Category")</li>
+</ol>
+<div id="toolbar" class="btn-group" role="group">
+    <button id="btn_add" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> 添加</button>
+    <button id="btn_del" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> 删除</button>
+</div>
+
+@section style{
+    @Styles.Render("~/Content/bootstrapplugincss")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/bootstrapplugin")
+    <script>
+        $(function () {
+            //添加按钮
+            @*$("#btn_add").click(function () {
+                       @Html.Action("AddGeneral")
+
+            });*@
+            //添加按钮结束
+
+            //删除按钮
+            $("#btn_del").click(function () {
+                var selected = $table.bootstrapTable("getSelections");
+                if ($(selected).length > 0) {
+                    BootstrapDialog.confirm("确定删除选中的" + $(selected).length + "位管理员", function (result) {
+                        if (result) {
+                            var ids = new Array($(selected).length);
+                            $.each(selected, function (index, value) {
+                                ids[index] = value.AdministratorID;
+                            });
+                            $.post("@Url.Action("DeleteJson","Admin")", { ids: ids }, function (data) {
+                                if (data.Code != 0) {
+                                    BootstrapDialog.show({
+                                        title: "删除管理员",
+                                        message: data.Message,
+                                        buttons: [{
+                                            icon: "glyphicon glyphicon-ok",
+                                            label: "确定",
+                                            action: function (dialogItself) {
+                                                $table.bootstrapTable("refresh");
+                                                dialogItself.close();
+                                            }
+                                        }]
+                                    });
+                                } else {
+                                    BootstrapDialog.alert(data.Message);
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    BootstrapDialog.alert("请至少选择删除一位管理员！");
+                }
+            });
+            //删除结束
+        });
+    </script>
+}

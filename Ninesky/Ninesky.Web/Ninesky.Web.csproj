@@ -171,6 +171,7 @@
     <Compile Include="Areas\Control\ControlAreaRegistration.cs" />
     <Compile Include="Areas\Control\Controllers\AdminController.cs" />
     <Compile Include="Areas\Control\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Control\Controllers\ConfigController.cs" />
     <Compile Include="Areas\Control\Controllers\HomeController.cs" />
     <Compile Include="Areas\Control\Controllers\RoleController.cs" />
     <Compile Include="Areas\Control\Controllers\UserController.cs" />
@@ -346,6 +347,15 @@
     <Content Include="Areas\Control\Views\Shared\PromptPartialView.cshtml" />
     <Content Include="Areas\Control\Views\User\Add.cshtml" />
     <Content Include="Areas\Control\Views\User\Modify.cshtml" />
+    <Content Include="Areas\Control\Views\Category\SideNavPartialView.cshtml" />
+    <Content Include="Areas\Control\Views\Category\Add.cshtml" />
+    <Content Include="Areas\Control\Views\Category\AddGeneral.cshtml" />
+    <Content Include="Areas\Control\Views\Category\AddPage.cshtml" />
+    <Content Include="Areas\Control\Views\Category\AddLink.cshtml" />
+    <Content Include="Areas\Control\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Control\Views\Config\SiteConfig.cshtml" />
+    <Content Include="Config\SiteConfig.config" />
+    <Content Include="Areas\Control\Views\Config\SideNavPartialView.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.min.js" />
@@ -478,7 +488,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Control\Views\Category\" />
     <Folder Include="Areas\Member\Models\" />
   </ItemGroup>
   <ItemGroup>
