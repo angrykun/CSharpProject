@@ -20,6 +20,17 @@ namespace Ninesky.Web.Areas.Control.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
+            var accounts = GetCookie("Accounts");
+            if (accounts != "")
+            {
+                var _admin = adminManger.Find(accounts);
+                Session.Add("AdminID", _admin.AdministratorID);
+                Session.Add("Accounts", _admin.Accounts);
+                _admin.LoginTime = DateTime.Now;
+                _admin.LoginIP = Request.UserHostAddress;
+                adminManger.Update(_admin);
+                return RedirectToAction("Index");
+            }
             return View();
         }
 
@@ -37,6 +48,7 @@ namespace Ninesky.Web.Areas.Control.Controllers
                     var _admin = adminManger.Find(loginViewModel.Accounts);
                     Session.Add("AdminID", _admin.AdministratorID);
                     Session.Add("Accounts", _admin.Accounts);
+                    SetCookie("Accounts", _admin.Accounts);
                     _admin.LoginTime = DateTime.Now;
                     _admin.LoginIP = Request.UserHostAddress;
                     adminManger.Update(_admin);
@@ -49,12 +61,56 @@ namespace Ninesky.Web.Areas.Control.Controllers
 
             return View(loginViewModel);
         }
+        #region Cookie 操作
+        /// <summary>
+        /// cookie 存储
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        private void SetCookie(string name, string value)
+        {
+            HttpCookie cookie = new HttpCookie(name);
+            cookie.HttpOnly = true;
+            cookie.Value = value;
+            cookie.Expires = DateTime.Now.AddMinutes(5);
+            HttpContext.Response.Cookies.Add(cookie);
+        }
+        /// <summary>
+        /// 读取cookie
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private string GetCookie(string name)
+        {
+            var cookie = HttpContext.Request.Cookies[name];
+            if (cookie != null)
+            {
+                return cookie.Value;
+            }
+            return "";
+        }
+        /// <summary>
+        /// 清除cookie
+        /// </summary>
+        /// <param name="name"></param>
+        private void ClearCookie(string name)
+        {
+            var cookie = HttpContext.Request.Cookies[name];
+            if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                HttpContext.Response.Cookies.Add(cookie); //将Cookie写回响应流中
+            }
+        }
+        #endregion
+
         #endregion
 
         #region 注销 Logout
         public ActionResult Logout()
         {
             Session.Clear();
+            ClearCookie("Accounts");
             return RedirectToAction("Login");
         }
         #endregion

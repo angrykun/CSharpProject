@@ -13,35 +13,38 @@
 </ol>
 
 
-@using (Html.BeginForm("Add", "Category", FormMethod.Post))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-    <ul id="myTabs" class="nav nav-tabs" role="tablist">
-        <li role="presentation">
-            <a href="#base" class="active" role="tab" data-toggle="tab" aria-controls="base">基本资料</a>
-        </li>
-        <li id="tabadvanced" role="presentation">
-            <a href="#advanced" role="tab" data-toggle="tab" aria-controls="advanced">高级设置</a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="base">
-            <br /><br />
-            <div class="form-horizontal">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <ul id="myTabs" class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#base" role="tab" data-toggle="tab" aria-controls="base">基本资料</a></li>
+            <li id="tabadvanced" role="presentation"><a href="#advanced" role="tab" data-toggle="tab" aria-controls="advanced">高级设置</a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="base">
+                <br />
+                <br />
                 <div class="form-group">
                     @Html.LabelFor(model => model.ParentID, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.HiddenFor(model => model.ParentID)
                         <div class="input-group" style="width:280px">
-                            <input id="ParentName" type="text" class="form-control" readonly />
-                            <ul class="dropdown-menu dropdown-menu-left ztree" style="display:none;width:100%" id="parenttree"></ul>
+                            <input id="textbox-CategoryID" type="text" class="form-control" readonly />
+                            <ul class="dropdown-menu dropdown-menu-left ztree" style="display:none" id="kk"></ul>
                             <div class="input-group-btn open">
                                 <button id="btn-CategoryID" type="button" class="btn btn-default"><span class="caret"></span></button>
                             </div>
                         </div>
+                        @*<div id='jqxWidget'>
+                            <div id="ParentIDc" class="form-control">
+                                <div style="border: none;" id='combTree'>
+                                </div>
+                            </div>
+                        </div>*@
+
                         @Html.ValidationMessageFor(model => model.ParentID, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -84,83 +87,105 @@
                         @Html.EditorFor(model => model.Target, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Target, "", new { @class = "text-danger" })
                     </div>
-
                 </div>
-                <div role="tabpanel" class="tab-pane" id="advanced">
+            </div>
+            <div role="tabpanel" class="tab-pane" id="advanced">
+                111
+            </div>
+        </div>
 
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="保存" class="btn btn-default" />
-                    </div>
-                </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="保存" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
+@*<div class="btn-group">
+       <button type="button" class="btn btn-default" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Action <span class="caret"></span>
+       </button>
+       <div class="dropdown-menu">
+           <ul id="kk" class="ztree"><li>ss</li></ul>
+       </div>
+
+    </div>*@
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrapplugin")
-    <script>
-        function showTabBySelect() {
-            switch ($("#Type").find("option:selected").text()) {
-                case "常规栏目":
-                    $("#advanced").load("@Url.Action("AddGeneral")");
-                    break;
-                case "单页栏目":
-                    $("#advanced").load("@Url.Action("AddPage")");
-                    break;
-                case "外部链接":
-                    $("#advanced").load("@Url.Action("AddLink")");
-                    break;
+    @*@Scripts.Render("~/Scripts/jquery.ztree.all.min.js")*@
+}
+@section style{
+    @Styles.Render("~/Content/zTree.css")
+}
+<script type="text/javascript">
+    //显示隐藏标签页
+    function showTabBySelect() {
+
+        console.log($("#Type").find("option:selected").text());
+        switch ($("#Type").find("option:selected").text()) {
+            case "常规栏目":
+                //$("#tabgeneral").show();
+                $("#advanced").load("@Url.Action("AddGeneral")");
+                break;
+            case "单页栏目":
+                //$("#tabgeneral").hide();
+                $("#advanced").load("@Url.Action("AddPage")");
+                break;
+            case "外部链接":
+                $("#advanced").load("@Url.Action("AddLink")");
+                break;
+        }
+    }
+    $(document).ready(function () {
+        showTabBySelect();
+        $("#Type").change(function () {
+            showTabBySelect();
+        });
+        //$("#ParentIDc").jqxDropDownButton({ width: 150, height: 25 });
+        $('#combTree').on('select', function (event) {
+            var args = event.args;
+            var item = $('#combTree').jqxTree('getItem', args.element);
+            var dropDownContent = '<div style="position: relative; margin-left: 3px; margin-top: 5px;">' + item.label + '</div>';
+            $("#ParentIDc").jqxDropDownButton('setContent', dropDownContent);
+            $("#ParentID").val(item.value);
+        });
+        @*$.post("@Url.Action("DropdownTreeList", "Category")", null, function (data) {
+            $("#combTree").jqxTree({ source: data, width: 200, height: 220 });
+
+            $("#combTree").jqxTree('selectItem', $("#combTree").find('#node_' + $("#ParentID").val())[0]);
+        }, "json");*@
+
+    });
+</script>
+<script type="text/javascript">
+
+    var zTreeObj;
+    // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+    var setting = {
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "value",
+                pIdKey: "parentid",
+                rootPId: 0
+            },
+            key: {
+                name: "label"
             }
         }
+    };
+    // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+    $(document).ready(function () {
+        $.post("@Url.Action("Tree")", null, function (data) {
+            zTreeObj = $.fn.zTree.init($("#kk"), setting, data);
+            var newNode = { Name: "无", CategoryID: "0", ParentID: "-1" };
+            newNode = zTreeObj.addNodes(null, 0, newNode);
+        }, "json");
 
-        $(function () {
-            showTabBySelect();
-            $("#Type").change(function () {
-                showTabBySelect();
-            });
-            //父栏目选择框 zTree
-            var zTreeObj;
-            // zTree 的参数配置
-            var setting = {
-                data: {
-                    simpleData: {
-                        enable: true,
-                        idKey: "id",
-                        pIdKey: "pId",
-                        rootPId: 0
-                    },
-                    key: {
-                        name: "name"
-                    }
-                },
-                callback: {
-                    onClick: function (event, treeId, treeNode) {
-                        $("#ParentID").val(treeNode.id);
-                        $("#ParentName").val(treeNode.name);
-                        $("#parenttree").slideUp();
-                    }
-                }
-            };
-            // zTree 的数据属性，
-            $.post("@Url.Action("DropdownTree")", null, function (data) {
-                zTreeObj = $.fn.zTree.init($("#parenttree"), setting, data);
-                var newNode = { name: "无", id: "0", pId: "-1" };
-                newNode = zTreeObj.addNodes(null, 0, newNode);
-                var node = zTreeObj.getNodeByParam("id", $("#ParentID").val(), null);
-                if (node != null) {
-                    $("#ParentName").val(node.name);
-                    zTreeObj.selectNode(node);
-                }
-            }, "json");
-            $("#btn-CategoryID").click(function () { $("#parenttree").slideDown(); });
-            //父栏目选择框 zTree
-
-
-        });
-    </script>
-}
+    });
+    $("#btn-CategoryID").click(function () { $("#kk").slideDown(); });
+</script>

@@ -26,7 +26,7 @@ namespace Ninesky.Web.Areas.Control.Controllers
         // GET: Control/Category
         public ActionResult Index()
         {
-            return View();
+            return View("Add");
         }
 
         #region 展示左侧树形列表
@@ -73,7 +73,66 @@ namespace Ninesky.Web.Areas.Control.Controllers
             return Json(_nodes);
         }
         #endregion
+        #region 组合树
+        /// <summary>
+        /// 组合树
+        /// </summary>
+        /// <returns></returns>
+        //public ActionResult DropdownTreeList()
+        //{
+        //    List<TreeNode> _nodes = new List<TreeNode>();
+        //    //栏目并进行排序使最深的节点排在最前
+        //    var _categories = categoryManager.FindList(0, CategoryType.General, new OrderParam[] { new OrderParam() { Method = OrderMethod.DESC, PropertyName = "ParentPath" }, new OrderParam() { Method = OrderMethod.ASC, PropertyName = "Order" } });
+        //    TreeNode _node;
+        //    //遍历常规栏目
+        //    foreach (var _category in _categories)
+        //    {
+        //        _node = new TreeNode() { parentid = _category.ParentID, value = _category.CategoryID, id = "node_" + _category.CategoryID, label = _category.Name, html = Url.Action("Detials", "Category", new { @id = _category.CategoryID }) };
+        //        if (_nodes.Exists(n => n.parentid == _category.CategoryID))
+        //        {
+        //            var _children = _nodes.Where(n => n.parentid == _category.CategoryID).ToList();
+        //            _nodes.RemoveAll(n => n.parentid == _category.CategoryID);
+        //            _node.items = _children;
+        //            _node.expanded = false;
+        //            _nodes.Add(_node);
+        //        }
+        //        else _nodes.Add(_node);
+        //    }
+        //    _nodes.Insert(0, new TreeNode() { id = "node_0", value = 0, label = "无" });
+        //    return Json(_nodes);
+        //}
 
+        //public ActionResult zTree(bool showIcon = false)
+        //{
+        //    List<TreeNode> _nodes = new List<TreeNode>();
+        //    //栏目并进行排序使最深的节点排在最前
+        //    var _categories = categoryManager.FindList(0, null, new OrderParam[] { new OrderParam() { Method = OrderMethod.DESC, PropertyName = "ParentPath" }, new OrderParam() { Method = OrderMethod.ASC, PropertyName = "Order" } });
+        //    TreeNode _node;
+        //    //遍历常规栏目
+        //    foreach (var _category in _categories)
+        //    {
+        //        _node = new TreeNode() { parentid = _category.ParentID, value = _category.CategoryID, id = "node_" + _category.CategoryID, label = _category.Name, html = Url.Action("Detials", "Category", new { @id = _category.CategoryID }) };
+        //        if (showIcon)
+        //        {
+        //            switch (_category.Type)
+        //            {
+        //                case CategoryType.General:
+        //                    _node.icon = Url.Content("~/Content/Images/folder.png");
+        //                    break;
+        //                case CategoryType.Page:
+        //                    _node.icon = Url.Content("~/Content/Images/page.png");
+        //                    break;
+        //                case CategoryType.Link:
+        //                    _node.icon = Url.Content("~/Content/Images/link.png");
+        //                    break;
+        //            }
+        //        }
+        //        _nodes.Add(_node);
+        //    }
+
+        //    return Json(_nodes);
+        //}
+        #endregion
         #region 下拉树【常规栏目】
         public ActionResult DropdownTree()
         {
@@ -195,7 +254,7 @@ namespace Ninesky.Web.Areas.Control.Controllers
         public ActionResult AddLink()
         {
             var _link = new CategoryLink() { Url = "http://" };
-            return View(_link);
+            return PartialView(_link);
         }
         #endregion
     }
